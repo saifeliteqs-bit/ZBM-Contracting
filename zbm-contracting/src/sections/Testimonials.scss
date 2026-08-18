@@ -1,0 +1,44 @@
+.testimonial-section {
+  background: var(--black-brown);
+  padding-block: clamp(100px, 14vw, 200px);
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial {
+  &__quote {
+    color: var(--cream);
+    max-width: 900px;
+    line-height: 1.15;
+    margin-bottom: 56px;
+    font-style: italic;
+    opacity: 0;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+  }
+
+  &__line {
+    width: 48px;
+    height: 1px;
+    background: var(--taupe);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__client {
+    color: var(--cream);
+  }
+
+  &__project {
+    color: var(--taupe);
+  }
+}

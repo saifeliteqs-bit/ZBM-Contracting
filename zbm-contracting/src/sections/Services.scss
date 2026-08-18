@@ -1,0 +1,139 @@
+.services {
+  background: var(--off-white);
+  padding-block: clamp(100px, 12vw, 180px);
+  position: relative;
+  z-index: 2;
+
+  &__header {
+    margin-bottom: clamp(48px, 6vw, 80px);
+    .label { margin-bottom: 16px; display: block; }
+  }
+
+  &__header-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 48px;
+    h2 { flex: 0 0 auto; color: var(--black-brown); }
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+
+  &__sub {
+    max-width: 360px;
+    color: var(--charcoal);
+    padding-bottom: 4px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__images {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden;
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  &__img-item {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 8px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+
+  &__img-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 28px;
+    background: linear-gradient(transparent, rgba(15,10,7,0.75));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  &__img-body {
+    max-width: 380px;
+    opacity: 0.85;
+  }
+}
+
+.service-item {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+
+  &__num {
+    color: var(--muted-grey);
+    transition: color 0.3s;
+  }
+
+  &__title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(22px, 2.5vw, 36px);
+    color: var(--taupe);
+    transition: color 0.3s, transform 0.3s;
+    letter-spacing: -0.01em;
+  }
+
+  &__arrow {
+    color: var(--taupe);
+    font-size: 18px;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  &__line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--taupe);
+    opacity: 0.3;
+  }
+
+  &.active,
+  &:hover {
+    .service-item__title {
+      color: var(--black-brown);
+      transform: translateX(8px);
+    }
+    .service-item__num { color: var(--warm-copper); }
+    .service-item__arrow {
+      color: var(--black-brown);
+      transform: translate(4px, -4px);
+    }
+  }
+}

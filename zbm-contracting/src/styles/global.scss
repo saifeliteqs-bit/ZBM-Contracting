@@ -1,0 +1,259 @@
+@use './variables' as *;
+
+// ===========================
+// RESET & BASE
+// ===========================
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--cream);
+  color: var(--black-brown);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+// ===========================
+// TYPOGRAPHY SYSTEM
+// ===========================
+.serif {
+  font-family: 'Instrument Serif', serif;
+}
+
+.display-xl {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(64px, 9vw, 148px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.display-lg {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(48px, 6.5vw, 110px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.display-md {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(36px, 4.5vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.body-lg {
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.body-sm {
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+// ===========================
+// LINE MASK SYSTEM
+// ===========================
+.line-mask {
+  overflow: hidden;
+  display: block;
+
+  span {
+    display: block;
+    will-change: transform;
+  }
+}
+
+// ===========================
+// IMAGE MASK SYSTEM
+// ===========================
+.img-mask {
+  overflow: hidden;
+  position: relative;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+  }
+}
+
+// ===========================
+// LAYOUT
+// ===========================
+.page-pad {
+  padding-inline: var(--page-pad);
+}
+
+.container {
+  width: 100%;
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+}
+
+// ===========================
+// CURSOR
+// ===========================
+.cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    background: var(--cream);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+  }
+
+  &__circle {
+    position: fixed;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--cream);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width 0.35s ease, height 0.35s ease, opacity 0.3s;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+  }
+}
+
+// ===========================
+// UTILITY
+// ===========================
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}
+
+.text-cream { color: var(--cream); }
+.text-black-brown { color: var(--black-brown); }
+.text-taupe { color: var(--taupe); }
+.text-warm-brown { color: var(--warm-brown); }
+.text-muted { color: var(--muted-grey); }
+
+.bg-dark { background: var(--black-brown); }
+.bg-cream { background: var(--cream); }
+.bg-off-white { background: var(--off-white); }
+
+// ===========================
+// SECTION SPACING
+// ===========================
+.section-space {
+  padding-block: clamp(100px, 12vw, 200px);
+}
+
+// ===========================
+// REDUCED MOTION
+// ===========================
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// ===========================
+// SITE WRAPPER
+// ===========================
+.site {
+  position: relative;
+  overflow: hidden;
+
+  &--ready {
+    // Site visible after loader
+  }
+}
+
+// ===========================
+// SMOOTH SCROLL FIX
+// ===========================
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+// ===========================
+// SELECTION
+// ===========================
+::selection {
+  background: var(--warm-brown);
+  color: var(--cream);
+}
+
+// ===========================
+// IMAGE BORDER RADIUS
+// ===========================
+.project-card__img img,
+.project-card,
+.about__img-wrap img,
+.about__img-wrap,
+.about__small-img,
+.about__small-img img,
+.fp__img-cont,
+.fp__img-cont img,
+.vb__img-wrap img,
+.ie__panel img,
+.feat-img img {
+  border-radius: 8px;
+}

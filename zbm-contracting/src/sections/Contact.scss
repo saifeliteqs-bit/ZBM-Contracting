@@ -1,0 +1,140 @@
+.contact {
+  position: relative;
+  z-index: 2;
+
+  &__cta {
+    background: var(--cream);
+    padding-block: clamp(80px, 10vw, 140px);
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  &__heading {
+    color: var(--black-brown);
+    margin-bottom: 32px;
+    .line-mask { display: block; }
+  }
+
+  &__line {
+    display: block;
+  }
+
+  &__sub {
+    max-width: 380px;
+  }
+
+  &__form-section {
+    background: var(--off-white);
+    padding-block: clamp(64px, 8vw, 120px);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: clamp(48px, 6vw, 96px);
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding-top: 8px;
+  }
+
+  &__detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    a {
+      color: var(--black-brown);
+      transition: color 0.3s;
+
+      &:hover { color: var(--warm-copper); }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      color: var(--muted-grey);
+    }
+
+    input,
+    select,
+    textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--taupe);
+      padding: 12px 0;
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      color: var(--black-brown);
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+      resize: none;
+
+      &::placeholder {
+        color: var(--muted-grey);
+      }
+
+      &:focus {
+        border-color: var(--black-brown);
+      }
+    }
+
+    select {
+      appearance: none;
+      cursor: pointer;
+    }
+  }
+
+  &__submit {
+    align-self: flex-start;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--black-brown);
+    padding: 16px 40px;
+    cursor: pointer;
+    transition: background 0.35s, transform 0.3s;
+    border: 1px solid var(--black-brown);
+
+    &:hover {
+      background: var(--warm-brown);
+      border-color: var(--warm-brown);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      align-self: stretch;
+      text-align: center;
+    }
+  }
+}

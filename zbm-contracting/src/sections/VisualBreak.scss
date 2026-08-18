@@ -1,0 +1,42 @@
+.vb {
+  position: relative;
+  height: 88vh;
+  min-height: 480px;
+  overflow: hidden;
+  z-index: 2;
+
+  &__img-wrap {
+    position: absolute;
+    inset: -15%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(15,10,7,0.18) 0%,
+      rgba(15,10,7,0.5) 100%
+    );
+  }
+
+  &__text {
+    position: absolute;
+    bottom: clamp(48px, 8vh, 100px);
+    left: var(--page-pad);
+    opacity: 0;
+  }
+
+  &__quote {
+    font-size: clamp(28px, 3.5vw, 56px);
+    color: var(--cream);
+    font-style: italic;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+}
