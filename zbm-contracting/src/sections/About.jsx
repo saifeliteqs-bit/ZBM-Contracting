@@ -5,14 +5,12 @@ import { useLanguage } from '../hooks/useLanguage.jsx';
 import './About.scss';
 
 const IMG1 = 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=90&auto=format&fit=crop';
-const IMG2 = 'https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=900&q=90&auto=format&fit=crop';
 
 export default function About() {
-  const { t, isAr } = useLanguage();
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const imgRef = useRef(null);
   const imgInnerRef = useRef(null);
-  const img2Ref = useRef(null);
   const h1r = useRef(null);
   const h2r = useRef(null);
 
@@ -21,17 +19,25 @@ export default function About() {
     const ctx = gsap.context(() => {
       [h1r, h2r].forEach((el, i) => {
         if (!el.current) return;
-        gsap.fromTo(el.current, { yPercent: 110 }, { yPercent: 0, duration: 1.0, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' }, delay: i * 0.12 });
+        gsap.fromTo(el.current, { yPercent: 110 }, {
+          yPercent: 0, duration: 1.0, ease: 'power3.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' },
+          delay: i * 0.12,
+        });
       });
-      gsap.fromTo(imgRef.current, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.4, ease: 'power4.inOut',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 65%' } });
-      gsap.fromTo(imgInnerRef.current, { scale: 1.18 }, { scale: 1, duration: 2.0, ease: 'power3.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 65%' } });
-      gsap.fromTo(img2Ref.current, { clipPath: 'inset(100% 0 0 0)', opacity: 0 }, { clipPath: 'inset(0% 0 0 0)', opacity: 1, duration: 1.0, ease: 'power4.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 55%' }, delay: 0.3 });
-      gsap.to(imgInnerRef.current, { yPercent: -8, ease: 'none',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: 1.5 } });
+      gsap.fromTo(imgRef.current,
+        { clipPath: 'inset(0 100% 0 0)' },
+        { clipPath: 'inset(0 0% 0 0)', duration: 1.4, ease: 'power4.inOut',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 65%' } }
+      );
+      gsap.fromTo(imgInnerRef.current, { scale: 1.18 }, {
+        scale: 1, duration: 2.0, ease: 'power3.out',
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 65%' },
+      });
+      gsap.to(imgInnerRef.current, {
+        yPercent: -8, ease: 'none',
+        scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: 1.5 },
+      });
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -52,10 +58,24 @@ export default function About() {
             <p className="body-lg">{t.about.body}</p>
             <p className="body-lg">{t.about.body2}</p>
           </div>
-          <div className="about__small-img" ref={img2Ref}>
-            <img src={IMG2} alt="Exterior architecture" />
+
+          {/* Stats row instead of small image */}
+          <div className="about__highlights">
+            <div className="about__highlight">
+              <span className="about__highlight-num">120+</span>
+              <span className="about__highlight-label label text-muted">Projects Delivered</span>
+            </div>
+            <div className="about__highlight">
+              <span className="about__highlight-num">12+</span>
+              <span className="about__highlight-label label text-muted">Years Experience</span>
+            </div>
+            <div className="about__highlight">
+              <span className="about__highlight-num">2</span>
+              <span className="about__highlight-label label text-muted">Core Disciplines</span>
+            </div>
           </div>
         </div>
+
         <div className="about__right">
           <div className="about__img-wrap" ref={imgRef}>
             <img ref={imgInnerRef} src={IMG1} alt="Premium interior design" />
