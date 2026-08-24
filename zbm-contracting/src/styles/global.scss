@@ -1,8 +1,7 @@
 @use './variables' as *;
 
-// ===========================
-// RESET & BASE
-// ===========================
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap');
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -23,52 +22,38 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { background: none; border: none; cursor: pointer; font-family: inherit; }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-// ===========================
-// TYPOGRAPHY SYSTEM
-// ===========================
-.serif {
-  font-family: 'Instrument Serif', serif;
-}
+// ── TYPOGRAPHY ──────────────────────────
+.serif { font-family: 'Instrument Serif', serif; }
 
 .display-xl {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(64px, 9vw, 148px);
-  line-height: 0.9;
+  font-size: clamp(56px, 8vw, 140px);
+  line-height: 0.92;
   letter-spacing: -0.02em;
+  overflow: visible;
+  word-break: normal;
 }
 
 .display-lg {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(48px, 6.5vw, 110px);
-  line-height: 0.92;
+  font-size: clamp(40px, 5.5vw, 96px);
+  line-height: 0.95;
   letter-spacing: -0.02em;
+  overflow: visible;
 }
 
 .display-md {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(36px, 4.5vw, 72px);
+  font-size: clamp(32px, 4vw, 64px);
   line-height: 1.0;
   letter-spacing: -0.01em;
+  overflow: visible;
 }
 
 .label {
@@ -91,12 +76,13 @@ button {
   font-weight: 400;
 }
 
-// ===========================
-// LINE MASK SYSTEM
-// ===========================
+// ── LINE MASK — key fix for cut text ────
 .line-mask {
-  overflow: hidden;
   display: block;
+  overflow: hidden;
+  // Extra space so descenders (g, p, y) never clip
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
 
   span {
     display: block;
@@ -104,9 +90,7 @@ button {
   }
 }
 
-// ===========================
-// IMAGE MASK SYSTEM
-// ===========================
+// ── IMAGE MASK ───────────────────────────
 .img-mask {
   overflow: hidden;
   position: relative;
@@ -120,12 +104,8 @@ button {
   }
 }
 
-// ===========================
-// LAYOUT
-// ===========================
-.page-pad {
-  padding-inline: var(--page-pad);
-}
+// ── LAYOUT ───────────────────────────────
+.page-pad { padding-inline: var(--page-pad); }
 
 .container {
   width: 100%;
@@ -134,154 +114,50 @@ button {
   padding-inline: var(--page-pad);
 }
 
-// ===========================
-// CURSOR
-// ===========================
-.cursor {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: difference;
-
-  &__dot {
-    width: 8px;
-    height: 8px;
-    background: var(--cream);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s;
-  }
-
-  &__circle {
-    position: fixed;
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--cream);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    transition: width 0.35s ease, height 0.35s ease, opacity 0.3s;
-    opacity: 0.6;
-    top: 0;
-    left: 0;
-  }
-}
-
-// ===========================
-// UTILITY
-// ===========================
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-}
-
+// ── COLORS ───────────────────────────────
 .text-cream { color: var(--cream); }
 .text-black-brown { color: var(--black-brown); }
 .text-taupe { color: var(--taupe); }
 .text-warm-brown { color: var(--warm-brown); }
 .text-muted { color: var(--muted-grey); }
-
 .bg-dark { background: var(--black-brown); }
 .bg-cream { background: var(--cream); }
 .bg-off-white { background: var(--off-white); }
 
-// ===========================
-// SECTION SPACING
-// ===========================
-.section-space {
-  padding-block: clamp(100px, 12vw, 200px);
-}
+// ── SITE ─────────────────────────────────
+.site { position: relative; overflow: hidden; }
 
-// ===========================
-// REDUCED MOTION
-// ===========================
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+// ── LENIS ────────────────────────────────
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
 
-// ===========================
-// SITE WRAPPER
-// ===========================
-.site {
-  position: relative;
-  overflow: hidden;
+// ── SELECTION ────────────────────────────
+::selection { background: var(--warm-brown); color: var(--cream); }
 
-  &--ready {
-    // Site visible after loader
-  }
-}
-
-// ===========================
-// SMOOTH SCROLL FIX
-// ===========================
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-// ===========================
-// SELECTION
-// ===========================
-::selection {
-  background: var(--warm-brown);
-  color: var(--cream);
-}
-
-// ===========================
-// IMAGE BORDER RADIUS
-// ===========================
-.project-card__img img,
+// ── IMAGE BORDER RADIUS ──────────────────
 .project-card,
-.about__img-wrap img,
 .about__img-wrap,
-.about__small-img,
-.about__small-img img,
 .fp__img-cont,
-.fp__img-cont img,
-.vb__img-wrap img,
 .ie__panel img,
-.feat-img img {
+.services__img-item img,
+.process__img-wrap {
   border-radius: 8px;
 }
 
-// ===========================
-// TEXT OVERFLOW FIX
-// ===========================
-.display-xl, .display-lg, .display-md {
-  overflow: visible;
-  word-break: normal;
-  hyphens: none;
-}
-
-// Line mask must be wide enough
-.line-mask {
-  overflow: hidden;
-  display: block;
-  // Extra padding so descenders/ascenders don't clip
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
-}
-
-// RTL Arabic font support
+// ── RTL / ARABIC ─────────────────────────
 .rtl {
   .display-xl, .display-lg, .display-md, .serif {
-    font-family: 'Instrument Serif', 'Traditional Arabic', 'Arabic Typesetting', serif;
+    font-family: 'Instrument Serif', 'Traditional Arabic', serif;
   }
   .label, .body-lg, .body-sm {
-    font-family: 'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+  }
+}
+
+// ── REDUCED MOTION ───────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
