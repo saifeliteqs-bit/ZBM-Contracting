@@ -63,4 +63,9 @@
       line-height: 1.2;
     }
   }
+  &__body {
+    color: var(--charcoal);
+    max-width: 420px;
+    margin-top: 24px;
+  }
 }
