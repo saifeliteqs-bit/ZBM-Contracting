@@ -257,3 +257,31 @@ html.lenis, html.lenis body {
 .feat-img img {
   border-radius: 8px;
 }
+
+// ===========================
+// TEXT OVERFLOW FIX
+// ===========================
+.display-xl, .display-lg, .display-md {
+  overflow: visible;
+  word-break: normal;
+  hyphens: none;
+}
+
+// Line mask must be wide enough
+.line-mask {
+  overflow: hidden;
+  display: block;
+  // Extra padding so descenders/ascenders don't clip
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+// RTL Arabic font support
+.rtl {
+  .display-xl, .display-lg, .display-md, .serif {
+    font-family: 'Instrument Serif', 'Traditional Arabic', 'Arabic Typesetting', serif;
+  }
+  .label, .body-lg, .body-sm {
+    font-family: 'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+}
