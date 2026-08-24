@@ -23,6 +23,7 @@
 
   &__label {
     margin-bottom: 28px;
+    display: block;
   }
 
   &__heading {
@@ -31,6 +32,8 @@
 
     .line-mask {
       display: block;
+      overflow: hidden;
+      padding-bottom: 0.1em;
     }
   }
 
@@ -43,27 +46,28 @@
     margin-bottom: 48px;
   }
 
-  &__small-img {
-    width: 100%;
-    max-width: 320px;
-    aspect-ratio: 4/3;
-    overflow: hidden;
+  &__highlights {
+    display: flex;
+    gap: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--taupe);
+  }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
+  &__highlight {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
 
-      &:hover {
-        transform: scale(1.04);
-      }
-    }
+  &__highlight-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    color: var(--black-brown);
+    line-height: 1;
+  }
 
-    @media (max-width: 900px) {
-      max-width: 100%;
-      aspect-ratio: 16/9;
-    }
+  &__highlight-label {
+    color: var(--muted-grey);
   }
 
   &__right {
@@ -81,6 +85,7 @@
     aspect-ratio: 3/4;
     overflow: hidden;
     clip-path: inset(0 100% 0 0);
+    border-radius: 6px;
 
     img {
       width: 100%;
