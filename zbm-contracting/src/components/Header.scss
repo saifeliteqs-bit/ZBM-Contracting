@@ -198,3 +198,46 @@
 
   &:hover { color: var(--taupe); }
 }
+
+// Language Toggle Button
+.lang-toggle {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 7px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+
+  .header--scrolled & {
+    color: var(--black-brown);
+    background: rgba(15,10,7,0.08);
+    border-color: rgba(15,10,7,0.2);
+  }
+
+  &:hover {
+    background: rgba(255,255,255,0.25);
+  }
+
+  &--mobile {
+    color: var(--cream);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    margin-top: 32px;
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+}
+
+// RTL support
+.rtl {
+  font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+
+  .header__nav { direction: rtl; }
+  .hero__heading, .about__heading, .services__header h2 { direction: rtl; }
+}
