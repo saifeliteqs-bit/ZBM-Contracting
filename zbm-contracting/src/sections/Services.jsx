@@ -39,7 +39,7 @@ export default function Services() {
 
         <div className="services__grid">
           {services.map((svc, i) => (
-            <div key={i} className="svc-card">
+            <div key={i} className="svc-card" id={`service-${svc.number}`}>
               <div className="svc-card__img">
                 <img src={svc.image} alt={svc.title} loading="lazy" />
               </div>
