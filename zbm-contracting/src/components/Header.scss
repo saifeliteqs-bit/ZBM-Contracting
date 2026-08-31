@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 16px var(--page-pad);
+  padding: 14px var(--page-pad);
   transition: background 0.5s ease, backdrop-filter 0.5s;
 
   &--scrolled {
@@ -22,21 +22,22 @@
   &__logo {
     display: flex;
     align-items: center;
-    flex-shrink: 0; // never shrink logo
-    z-index: 2;
+    flex-shrink: 0;
 
     img {
-      height: 48px;
+      height: 52px;
       width: auto;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 5px;
-      padding: 5px 12px;
       display: block;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+      transition: height 0.3s;
 
       @media (max-width: 480px) {
-        height: 38px;
-        padding: 4px 8px;
+        height: 40px;
       }
+    }
+
+    .header--scrolled & img {
+      filter: none;
     }
   }
 
@@ -90,14 +91,18 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--black-brown);
+    background: var(--cream);
     border: 1px solid var(--cream);
     padding: 9px 18px;
-    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    transition: all 0.3s;
     cursor: pointer;
-    background: var(--cream);
     white-space: nowrap;
 
-    &:hover { background: var(--black-brown); color: var(--cream); border-color: var(--black-brown); }
+    &:hover {
+      background: var(--warm-copper);
+      color: var(--cream);
+      border-color: var(--warm-copper);
+    }
 
     @media (max-width: 768px) { display: none; }
   }
@@ -133,7 +138,6 @@
   }
 }
 
-// ── LANG TOGGLE ──────────────────────────
 .lang-toggle {
   font-family: 'Manrope', sans-serif;
   font-size: 11px;
@@ -141,7 +145,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--cream);
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.3);
   padding: 6px 12px;
   border-radius: 3px;
@@ -155,7 +159,7 @@
     border-color: rgba(15,10,7,0.2);
   }
 
-  &:hover { background: rgba(255,255,255,0.3); }
+  &:hover { background: rgba(255,255,255,0.28); }
 
   &--mobile {
     color: var(--cream);
@@ -174,7 +178,6 @@
   }
 }
 
-// ── MOBILE MENU ──────────────────────────
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -211,7 +214,7 @@
   color: var(--cream);
   display: block;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(230,228,229,0.1);
+  border-bottom: 1px solid rgba(230, 228, 229, 0.1);
   width: 100%;
   text-align: left;
   cursor: pointer;
@@ -220,5 +223,6 @@
   border-right: none;
   border-top: none;
   transition: color 0.3s;
+
   &:hover { color: var(--taupe); }
 }
