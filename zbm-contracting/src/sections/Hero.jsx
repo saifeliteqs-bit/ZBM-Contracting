@@ -1,36 +1,60 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../hooks/useLanguage.jsx';
 import './Hero.scss';
 
-const HERO_VIDEO = 'https://videos.pexels.com/video-files/7578544/7578544-uhd_2560_1440_24fps.mp4';
-const HERO_FALLBACK = 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=2400&q=90&auto=format&fit=crop';
+const slides = [
+  {
+    image: '/images/zbm_3.png',
+    eyebrow: 'Luxury Villa Renovation',
+    heading: ['Building homes', 'worth remembering.'],
+    sub: 'From foundation to final finish — we transform villas into refined living environments.',
+  },
+  {
+    image: '/images/zbm_2.png',
+    eyebrow: 'Premium Interior Fit-Out',
+    heading: ['Interiors that', 'feel like home.'],
+    sub: 'Every material, every finish, every detail — thoughtfully composed around the way you live.',
+  },
+  {
+    image: '/images/zbm_10.png',
+    eyebrow: 'Pool & Landscaping',
+    heading: ['Exteriors that', 'welcome you.'],
+    sub: 'Pools, gardens, pergolas and outdoor spaces — designed to make arrival a moment.',
+  },
+  {
+    image: '/images/zbm_20.png',
+    eyebrow: 'Commercial Fit-Out',
+    heading: ['Spaces that', 'work harder.'],
+    sub: 'Offices, restaurants and commercial interiors that reflect your brand and elevate your team.',
+  },
+];
 
 export default function Hero() {
-  const { t, isAr } = useLanguage();
-  const heroRef    = useRef(null);
-  const imgWrapRef = useRef(null);
-  const panelRef   = useRef(null);
-  const eyebrowRef = useRef(null);
-  const h0 = useRef(null);
-  const h1 = useRef(null);
-  const h2 = useRef(null);
-  const subRef = useRef(null);
-  const ctaRef = useRef(null);
+  const { t } = useLanguage();
+  const heroRef = useRef(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // Auto rotate slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Animate on slide change
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.fromTo('.hero__eyebrow-active', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
+    tl.fromTo('.hero__line-active', { yPercent: 115 }, { yPercent: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' }, 0.1);
+    tl.fromTo('.hero__sub-active', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.35);
+  }, [activeSlide]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 2.15 });
-      tl.to(panelRef.current, { xPercent: -100, duration: 1.15, ease: 'power4.inOut' });
-      tl.fromTo(imgWrapRef.current, { clipPath: 'inset(0 45% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.4, ease: 'power4.inOut' }, '-=0.7');
-      tl.fromTo(eyebrowRef.current, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, '-=1.1');
-      [h0, h1, h2].forEach((r, i) => {
-        if (!r.current) return;
-        tl.fromTo(r.current, { yPercent: 115 }, { yPercent: 0, duration: 0.95, ease: 'power3.out' }, i === 0 ? '-=0.5' : '-=0.72');
-      });
-      tl.fromTo([subRef.current, ctaRef.current], { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.75, stagger: 0.12, ease: 'power3.out' }, '-=0.5');
       gsap.to('.hero__content', {
         yPercent: -25, opacity: 0.4, ease: 'none',
         scrollTrigger: { trigger: heroRef.current, start: 'top top', end: '55% top', scrub: 1.1 },
@@ -39,31 +63,60 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  const current = slides[activeSlide];
+
   return (
     <section className="hero" ref={heroRef} id="hero">
-      <div className="hero__panel" ref={panelRef} />
-      <div className="hero__img-wrap" ref={imgWrapRef}>
-        <video className="hero__video" autoPlay muted loop playsInline poster={HERO_FALLBACK}>
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-        <div className="hero__overlay" />
-      </div>
-      <div className="hero__content container" style={{ textAlign: isAr ? 'right' : 'left' }}>
-        <p ref={eyebrowRef} className="hero__eyebrow label">{t.hero.eyebrow}</p>
-        <h1 className="hero__heading display-xl">
-          <span className="line-mask"><span ref={h0}>{t.hero.heading[0]}</span></span>
-          <span className="line-mask"><span ref={h1}>{t.hero.heading[1]}</span></span>
-          <span className="line-mask"><span ref={h2}>{t.hero.heading[2]}</span></span>
+      {/* Slide images */}
+      {slides.map((slide, i) => (
+        <div key={i} className={`hero__slide ${activeSlide === i ? 'active' : ''}`}>
+          <img src={slide.image} alt={slide.eyebrow} />
+        </div>
+      ))}
+      <div className="hero__overlay" />
+
+      {/* Content */}
+      <div className="hero__content container">
+        <p key={`e-${activeSlide}`} className="hero__eyebrow hero__eyebrow-active label">
+          {current.eyebrow}
+        </p>
+        <h1 key={`h-${activeSlide}`} className="hero__heading">
+          {current.heading.map((line, i) => (
+            <span className="line-mask" key={i}>
+              <span className="hero__line-active">{line}</span>
+            </span>
+          ))}
         </h1>
-        <p ref={subRef} className="hero__sub body-lg">{t.hero.sub}</p>
-        <button ref={ctaRef} className="hero__cta"
-          onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-          {t.hero.cta} {isAr ? '↙' : '↘'}
-        </button>
+        <p key={`s-${activeSlide}`} className="hero__sub hero__sub-active body-lg">{current.sub}</p>
+
+        <div className="hero__actions">
+          <button className="hero__cta"
+            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
+            Explore Services ↘
+          </button>
+          <button className="hero__cta hero__cta--outline"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            Get a Quote
+          </button>
+        </div>
       </div>
-      <div className="hero__scroll-hint">
-        <span className="label">{isAr ? 'تمرير' : 'Scroll'}</span>
-        <div className="hero__scroll-line" />
+
+      {/* Slide dots */}
+      <div className="hero__dots">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            className={`hero__dot ${activeSlide === i ? 'active' : ''}`}
+            onClick={() => setActiveSlide(i)}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Slide number */}
+      <div className="hero__counter">
+        <span className="serif">{String(activeSlide + 1).padStart(2, '0')}</span>
+        <span className="label"> / {String(slides.length).padStart(2, '0')}</span>
       </div>
     </section>
   );
