@@ -2,7 +2,7 @@
   position: relative;
   min-height: clamp(680px, 76vw, 850px);
   overflow: hidden;
-  background: #f6f4f1;
+  background: var(--cream);
   isolation: isolate;
 
   &__background {
@@ -21,22 +21,20 @@
     }
   }
 
-  /* White overlay that fades into the image, like the reference section */
   &__overlay {
     position: absolute;
     inset: 0;
     z-index: -2;
-    background:
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0.99) 28%,
-        rgba(255, 255, 255, 0.95) 38%,
-        rgba(255, 255, 255, 0.78) 48%,
-        rgba(255, 255, 255, 0.28) 61%,
-        rgba(255, 255, 255, 0.02) 78%,
-        rgba(255, 255, 255, 0) 100%
-      );
+    background: linear-gradient(
+      90deg,
+      rgba(230, 228, 229, 1) 0%,
+      rgba(230, 228, 229, 0.99) 28%,
+      rgba(230, 228, 229, 0.95) 38%,
+      rgba(230, 228, 229, 0.78) 48%,
+      rgba(230, 228, 229, 0.28) 61%,
+      rgba(230, 228, 229, 0.02) 78%,
+      rgba(230, 228, 229, 0) 100%
+    );
     pointer-events: none;
   }
 
@@ -60,19 +58,19 @@
     top: 10px;
     width: clamp(34px, 3vw, 46px);
     height: clamp(34px, 3vw, 46px);
-    background: #d6bf82;
+    background: var(--warm-copper);
   }
 
   &__label {
     margin: 0 0 18px;
-    color: #9b8754;
-    letter-spacing: 0.16em;
+    color: var(--warm-copper);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
 
   &__heading {
     margin: 0 0 30px;
-    color: #006c7b;
+    color: var(--black-brown);
     font-size: clamp(50px, 5.2vw, 78px);
     line-height: 0.98;
     max-width: 620px;
@@ -93,7 +91,7 @@
     flex-direction: column;
     gap: 14px;
     max-width: 570px;
-    color: #757575;
+    color: var(--charcoal);
     margin-bottom: 34px;
 
     p {
@@ -113,36 +111,38 @@
     min-width: 190px;
     min-height: 52px;
     padding: 14px 24px;
-    border: 1px solid #006c7b;
+    border: 1px solid var(--warm-copper);
     font: inherit;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 
     &:hover {
       transform: translateY(-2px);
     }
 
     &--primary {
-      background: #006c7b;
-      color: #fff;
+      background: var(--warm-copper);
+      color: var(--cream);
 
       &:hover {
-        background: #005a67;
+        background: var(--deep-brown);
+        border-color: var(--deep-brown);
       }
     }
 
     &--outline {
-      background: rgba(255, 255, 255, 0.58);
-      color: #005f6c;
+      background: rgba(230, 228, 229, 0.5);
+      color: var(--black-brown);
       backdrop-filter: blur(5px);
 
       &:hover {
-        background: #006c7b;
-        color: #fff;
+        background: var(--black-brown);
+        border-color: var(--black-brown);
+        color: var(--cream);
       }
     }
   }
@@ -152,7 +152,7 @@
     gap: clamp(28px, 3vw, 48px);
     max-width: 570px;
     padding-top: 26px;
-    border-top: 1px solid rgba(90, 90, 90, 0.22);
+    border-top: 1px solid rgba(15, 10, 7, 0.18);
   }
 
   &__highlight {
@@ -165,11 +165,11 @@
     font-family: 'Instrument Serif', serif;
     font-size: clamp(30px, 2.7vw, 42px);
     line-height: 1;
-    color: #191512;
+    color: var(--black-brown);
   }
 
   &__highlight-label {
-    color: #807c78;
+    color: var(--muted-grey);
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.16em;
@@ -189,11 +189,11 @@
     &__overlay {
       background: linear-gradient(
         90deg,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0.98) 38%,
-        rgba(255, 255, 255, 0.8) 54%,
-        rgba(255, 255, 255, 0.18) 76%,
-        rgba(255, 255, 255, 0) 100%
+        rgba(230, 228, 229, 1) 0%,
+        rgba(230, 228, 229, 0.98) 38%,
+        rgba(230, 228, 229, 0.8) 54%,
+        rgba(230, 228, 229, 0.18) 76%,
+        rgba(230, 228, 229, 0) 100%
       );
     }
   }
@@ -225,7 +225,7 @@
     &__content {
       width: 100%;
       padding: 64px 24px 70px 72px;
-      background: #fff;
+      background: var(--cream);
     }
 
     &__accent {
