@@ -8,13 +8,10 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Stats from './sections/Stats';
 import Services from './sections/Services';
-import Statement from './sections/Statement';
+import WhyChoose from './sections/WhyChoose';
 import Projects from './sections/Projects';
-import FeaturedProject from './sections/FeaturedProject';
-import InteriorExterior from './sections/InteriorExterior';
 import Process from './sections/Process';
-import WhyZBM from './sections/WhyZBM';
-import Testimonials from './sections/Testimonials';
+import CTABanner from './sections/CTABanner';
 import Contact from './sections/Contact';
 
 import './styles/global.scss';
@@ -34,13 +31,10 @@ export default function App() {
           <About />
           <Stats />
           <Services />
-          <Statement />
+          <WhyChoose />
           <Projects />
-          <FeaturedProject />
-          <InteriorExterior />
           <Process />
-          <WhyZBM />
-          <Testimonials />
+          <CTABanner />
           <Contact />
         </main>
 
