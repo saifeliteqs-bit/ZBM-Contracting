@@ -19,7 +19,7 @@ export default function Process() {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 78%',
+            start: 'top 80%',
           },
         }
       );
@@ -31,11 +31,12 @@ export default function Process() {
     <section className="proc" ref={sectionRef} id="process">
       <div className="container">
         <div className="proc__header">
-          <p className="label text-muted">How We Work</p>
-          <h2 className="proc__title">From first idea to final detail.</h2>
-          <p className="proc__sub body-lg">
-            A streamlined 4-step process that keeps you informed and in control
-            at every stage.
+          <p className="proc__eyebrow">HOW WE WORK</p>
+          <h2 className="proc__title">
+            From first idea to <span className="accent">final detail</span>.
+          </h2>
+          <p className="proc__sub">
+            A streamlined 4-step process that keeps you informed and in control at every stage.
           </p>
         </div>
 
@@ -44,8 +45,8 @@ export default function Process() {
             <div key={i} className="proc-step">
               <div className="proc-step__num">{step.number}</div>
               <div className="proc-step__line" />
-              <h3 className="proc-step__title serif">{step.title}</h3>
-              <p className="proc-step__desc body-sm">{step.description}</p>
+              <h3 className="proc-step__title">{step.title}</h3>
+              <p className="proc-step__desc">{step.description}</p>
             </div>
           ))}
         </div>
