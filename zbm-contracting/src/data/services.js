@@ -1,56 +1,128 @@
 export const services = [
   {
     number: '01',
-    title: 'Interior Design',
-    description:
-      'We craft interiors that balance aesthetics with the way people live. From material selection to spatial planning, every element is considered to create harmony and purpose.',
-    image:
-      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1400&q=90&auto=format&fit=crop',
-    category: 'Interior',
+    title: 'Full Villa Renovation',
+    description: 'Complete transformation of your villa from foundation to finish, delivering luxury and functionality.',
+    image: '/images/zbm_5.png',
+    category: 'Renovation',
   },
   {
     number: '02',
-    title: 'Exterior Design',
-    description:
-      'First impressions define a property. We design exterior environments that communicate quality, character and refinement from the moment of arrival.',
-    image:
-      'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1400&q=90&auto=format&fit=crop',
-    category: 'Exterior',
+    title: 'Interior Fit-Out',
+    description: 'Complete interior solutions with high-quality detailing, from concept to final handover.',
+    image: '/images/zbm_2.png',
+    category: 'Interior',
   },
   {
     number: '03',
-    title: 'Fit-Out & Execution',
-    description:
-      'From concept to completion, we manage the full fit-out process. Our teams bring design intent to life with precision, using skilled trades and quality materials.',
-    image:
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1400&q=90&auto=format&fit=crop',
-    category: 'Execution',
+    title: 'Full Kitchen Renovation',
+    description: 'Luxury kitchen transformations with premium materials, custom cabinetry and modern appliances.',
+    image: '/images/zbm_4.png',
+    category: 'Renovation',
   },
   {
     number: '04',
-    title: 'Renovation',
-    description:
-      'Transforming existing spaces into refined environments. We approach renovation with the same design rigour as new build, uncovering the potential within every structure.',
-    image:
-      'https://images.unsplash.com/photo-1556912173-3bb406ef7e8d?w=1400&q=90&auto=format&fit=crop',
+    title: 'Bathroom Renovation',
+    description: 'Premium bathroom design and execution with luxury fixtures, marble finishes and elegant lighting.',
+    image: '/images/zbm_7.png',
     category: 'Renovation',
   },
   {
     number: '05',
-    title: 'Architectural Visualization',
-    description:
-      'We create precise visual representations of design intent — helping clients understand and experience spaces before construction begins.',
-    image:
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1400&q=90&auto=format&fit=crop',
-    category: 'Visualization',
+    title: 'Commercial Office Fit-Out',
+    description: 'Modern corporate interiors that reflect your brand identity and enhance productivity.',
+    image: '/images/zbm_8.png',
+    category: 'Commercial',
   },
   {
     number: '06',
-    title: 'Residential & Commercial',
-    description:
-      'Whether a private villa or a corporate headquarters, our design approach adapts to the purpose and personality of each project without compromising on quality.',
-    image:
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=90&auto=format&fit=crop',
-    category: 'Commercial',
+    title: 'Pool Construction',
+    description: 'Custom-designed swimming pools with premium finishes, lighting and integrated landscape design.',
+    image: '/images/zbm_10.png',
+    category: 'Exterior',
+  },
+  {
+    number: '07',
+    title: 'Landscaping & Gardens',
+    description: 'Beautifully designed outdoor spaces combining hardscape, softscape, plants and lighting.',
+    image: '/images/zbm_11.png',
+    category: 'Exterior',
+  },
+  {
+    number: '08',
+    title: 'Pergola & Shade Structures',
+    description: 'Modern aluminum and wood pergolas designed for elegance and durability in the UAE climate.',
+    image: '/images/zbm_12.png',
+    category: 'Exterior',
+  },
+  {
+    number: '09',
+    title: 'Aluminum Work',
+    description: 'Precision aluminum windows, doors and facades with premium finish and thermal efficiency.',
+    image: '/images/zbm_13.png',
+    category: 'Technical',
+  },
+  {
+    number: '10',
+    title: 'Glass Partition Work',
+    description: 'Floor-to-ceiling glass partitions for offices and residences, combining transparency with privacy.',
+    image: '/images/zbm_14.png',
+    category: 'Technical',
+  },
+  {
+    number: '11',
+    title: 'Painting Internal & External',
+    description: 'Professional painting services with premium finishes for interior walls and exterior facades.',
+    image: '/images/zbm_15.png',
+    category: 'Finishing',
+  },
+  {
+    number: '12',
+    title: 'Flooring & Tiling',
+    description: 'Expert installation of marble, porcelain, wood and premium tile finishes throughout your space.',
+    image: '/images/zbm_16.png',
+    category: 'Finishing',
+  },
+  {
+    number: '13',
+    title: 'Ceiling Gypsum & Marble Work',
+    description: 'Custom gypsum ceilings, moldings and precision marble work for a signature finished look.',
+    image: '/images/zmb_9.png',
+    category: 'Finishing',
+  },
+  {
+    number: '14',
+    title: 'Electrical Works',
+    description: 'Complete electrical solutions including lighting design, wiring, and smart home integration.',
+    image: '/images/zbm_18.png',
+    category: 'MEP',
+  },
+  {
+    number: '15',
+    title: 'AC & Ducting (MEP)',
+    description: 'HVAC installation, ducting, plumbing and mechanical systems by certified technicians.',
+    image: '/images/zbm_19.png',
+    category: 'MEP',
+  },
+  {
+    number: '16',
+    title: 'Waterproofing',
+    description: 'Complete waterproofing solutions for roofs, bathrooms, pools and basements — long-lasting protection.',
+    image: '/images/zmb_6.png',
+    category: 'Technical',
+  },
+  {
+    number: '17',
+    title: 'Fencing & Gates',
+    description: 'Custom-designed fences, gates and boundary walls combining security with architectural style.',
+    image: '/images/zbm_11.png',
+    category: 'Exterior',
+  },
+  {
+    number: '18',
+    title: 'Turnkey Solutions',
+    description: 'End-to-end project execution from planning to delivery — a single team, complete accountability.',
+    image: '/images/zmb_1.png',
+    category: 'Full Service',
   },
 ];
