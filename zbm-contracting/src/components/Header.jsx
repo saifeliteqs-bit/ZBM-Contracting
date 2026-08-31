@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../hooks/useLanguage.jsx';
+import { services } from '../data/services';
 import './Header.scss';
 
 const LOGO = '/images/17618.gif';
@@ -46,9 +47,39 @@ export default function Header() {
 
           <nav className="header__nav">
             {t.nav.links.map((link, i) => (
-              <button key={i} className="header__link" onClick={() => {
-                document.getElementById(navIds[i])?.scrollIntoView({ behavior: 'smooth' });
-              }}>{link}</button>
+              navIds[i] === 'services' ? (
+                <div className="header__dropdown" key={i}>
+                  <button className="header__link header__link--services" onClick={() => {
+                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                  }}>
+                    {link} <span className="header__dropdown-arrow">⌄</span>
+                  </button>
+
+                  <div className="header__dropdown-menu">
+                    <div className="header__dropdown-grid">
+                      {services.map((service) => (
+                        <button
+                          key={service.number}
+                          className="header__dropdown-item"
+                          onClick={() => {
+                            document.getElementById(`service-${service.number}`)?.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'center',
+                            });
+                          }}
+                        >
+                          <span>{service.number}</span>
+                          {service.title}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <button key={i} className="header__link" onClick={() => {
+                  document.getElementById(navIds[i])?.scrollIntoView({ behavior: 'smooth' });
+                }}>{link}</button>
+              )
             ))}
           </nav>
 
@@ -76,6 +107,29 @@ export default function Header() {
                   setMenuOpen(false);
                   setTimeout(() => document.getElementById(navIds[i])?.scrollIntoView({ behavior: 'smooth' }), 300);
                 }}>{link}</button>
+
+                {navIds[i] === 'services' && (
+                  <div className="mobile-services">
+                    {services.map((service) => (
+                      <button
+                        key={service.number}
+                        className="mobile-services__item"
+                        onClick={() => {
+                          setMenuOpen(false);
+                          setTimeout(() => {
+                            document.getElementById(`service-${service.number}`)?.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'center',
+                            });
+                          }, 300);
+                        }}
+                      >
+                        <span>{service.number}</span>
+                        {service.title}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </nav>
