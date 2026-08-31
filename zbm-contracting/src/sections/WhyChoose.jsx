@@ -51,7 +51,7 @@ export default function WhyChoose() {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 78%',
+            start: 'top 80%',
           },
         }
       );
@@ -63,9 +63,11 @@ export default function WhyChoose() {
     <section className="wc" ref={sectionRef} id="why-zbm">
       <div className="container">
         <div className="wc__header">
-          <p className="label text-muted">Why Choose ZBM</p>
-          <h2 className="wc__title">Building trust, one project at a time.</h2>
-          <p className="wc__sub body-lg">
+          <p className="wc__eyebrow">WHY CHOOSE ZBM</p>
+          <h2 className="wc__title">
+            Building trust, one <span className="accent">project</span> at a time.
+          </h2>
+          <p className="wc__sub">
             When it comes to contracting services in Dubai and the UAE, ZBM stands apart
             through relentless focus on quality, transparency and on-time delivery.
           </p>
@@ -75,8 +77,8 @@ export default function WhyChoose() {
           {features.map((f, i) => (
             <div key={i} className="wc-item">
               <div className="wc-item__icon">{f.icon}</div>
-              <h3 className="wc-item__title serif">{f.title}</h3>
-              <p className="wc-item__desc body-sm">{f.desc}</p>
+              <h3 className="wc-item__title">{f.title}</h3>
+              <p className="wc-item__desc">{f.desc}</p>
             </div>
           ))}
         </div>
