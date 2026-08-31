@@ -1,100 +1,283 @@
 .about {
-  background: var(--cream);
-  padding-block: clamp(100px, 14vw, 220px);
   position: relative;
-  z-index: 2;
+  min-height: clamp(680px, 76vw, 850px);
+  overflow: hidden;
+  background: #f6f4f1;
+  isolation: isolate;
 
-  &__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(48px, 6vw, 100px);
-    align-items: start;
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
 
-    @media (max-width: 900px) {
-      grid-template-columns: 1fr;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 66% center;
+      display: block;
+      transform-origin: center;
     }
   }
 
-  &__left {
+  /* White overlay that fades into the image, like the reference section */
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.99) 28%,
+        rgba(255, 255, 255, 0.95) 38%,
+        rgba(255, 255, 255, 0.78) 48%,
+        rgba(255, 255, 255, 0.28) 61%,
+        rgba(255, 255, 255, 0.02) 78%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    pointer-events: none;
+  }
+
+  &__inner {
+    min-height: inherit;
     display: flex;
-    flex-direction: column;
-    padding-top: clamp(0px, 3vw, 60px);
+    align-items: center;
+    padding-top: clamp(80px, 8vw, 120px);
+    padding-bottom: clamp(80px, 8vw, 120px);
+  }
+
+  &__content {
+    position: relative;
+    width: min(620px, 48vw);
+    padding-left: clamp(54px, 5vw, 92px);
+  }
+
+  &__accent {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: clamp(34px, 3vw, 46px);
+    height: clamp(34px, 3vw, 46px);
+    background: #d6bf82;
   }
 
   &__label {
-    margin-bottom: 28px;
-    display: block;
+    margin: 0 0 18px;
+    color: #9b8754;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
   &__heading {
-    color: var(--black-brown);
-    margin-bottom: 40px;
+    margin: 0 0 30px;
+    color: #006c7b;
+    font-size: clamp(50px, 5.2vw, 78px);
+    line-height: 0.98;
+    max-width: 620px;
 
     .line-mask {
       display: block;
       overflow: hidden;
-      padding-bottom: 0.1em;
+      padding-bottom: 0.08em;
+
+      > span {
+        display: block;
+      }
     }
   }
 
   &__body {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    color: var(--charcoal);
-    max-width: 480px;
-    margin-bottom: 48px;
+    gap: 14px;
+    max-width: 570px;
+    color: #757575;
+    margin-bottom: 34px;
+
+    p {
+      margin: 0;
+      line-height: 1.65;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 42px;
+  }
+
+  &__btn {
+    min-width: 190px;
+    min-height: 52px;
+    padding: 14px 24px;
+    border: 1px solid #006c7b;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &--primary {
+      background: #006c7b;
+      color: #fff;
+
+      &:hover {
+        background: #005a67;
+      }
+    }
+
+    &--outline {
+      background: rgba(255, 255, 255, 0.58);
+      color: #005f6c;
+      backdrop-filter: blur(5px);
+
+      &:hover {
+        background: #006c7b;
+        color: #fff;
+      }
+    }
   }
 
   &__highlights {
     display: flex;
-    gap: 40px;
-    padding-top: 32px;
-    border-top: 1px solid var(--taupe);
+    gap: clamp(28px, 3vw, 48px);
+    max-width: 570px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(90, 90, 90, 0.22);
   }
 
   &__highlight {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 7px;
   }
 
   &__highlight-num {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(28px, 3vw, 44px);
-    color: var(--black-brown);
+    font-size: clamp(30px, 2.7vw, 42px);
     line-height: 1;
+    color: #191512;
   }
 
   &__highlight-label {
-    color: var(--muted-grey);
+    color: #807c78;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  &__right {
-    position: sticky;
-    top: 120px;
+  @media (max-width: 1100px) {
+    &__background img {
+      object-position: 72% center;
+    }
 
-    @media (max-width: 900px) {
-      position: static;
-      order: -1;
+    &__content {
+      width: min(610px, 58vw);
+    }
+
+    &__overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.98) 38%,
+        rgba(255, 255, 255, 0.8) 54%,
+        rgba(255, 255, 255, 0.18) 76%,
+        rgba(255, 255, 255, 0) 100%
+      );
     }
   }
 
-  &__img-wrap {
-    width: 100%;
-    aspect-ratio: 3/4;
-    overflow: hidden;
-    clip-path: inset(0 100% 0 0);
-    border-radius: 6px;
+  @media (max-width: 800px) {
+    min-height: auto;
 
-    img {
+    &__background {
+      position: relative;
+      height: 54vw;
+      min-height: 340px;
+      z-index: 0;
+
+      img {
+        object-position: center;
+      }
+    }
+
+    &__overlay {
+      display: none;
+    }
+
+    &__inner {
+      min-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &__content {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      padding: 64px 24px 70px 72px;
+      background: #fff;
     }
 
-    @media (max-width: 900px) {
-      aspect-ratio: 4/3;
+    &__accent {
+      left: 22px;
+      top: 68px;
+      width: 32px;
+      height: 32px;
+    }
+
+    &__heading {
+      font-size: clamp(42px, 10vw, 64px);
+    }
+
+    &__body {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    &__background {
+      height: 68vw;
+      min-height: 300px;
+    }
+
+    &__content {
+      padding: 54px 20px 60px 58px;
+    }
+
+    &__accent {
+      left: 18px;
+      top: 58px;
+      width: 26px;
+      height: 26px;
+    }
+
+    &__actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+
+    &__highlights {
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    &__highlight-label {
+      white-space: normal;
     }
   }
 }
