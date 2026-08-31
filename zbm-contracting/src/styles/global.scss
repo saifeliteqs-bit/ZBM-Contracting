@@ -28,59 +28,53 @@ img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { background: none; border: none; cursor: pointer; font-family: inherit; }
 
-// ── TYPOGRAPHY ──────────────────────────
 .serif { font-family: 'Instrument Serif', serif; }
 
+// SMALLER font scales
 .display-xl {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(56px, 8vw, 140px);
-  line-height: 0.92;
+  font-size: clamp(40px, 5.5vw, 92px);
+  line-height: 0.98;
   letter-spacing: -0.02em;
-  overflow: visible;
-  word-break: normal;
 }
 
 .display-lg {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(40px, 5.5vw, 96px);
-  line-height: 0.95;
+  font-size: clamp(32px, 4.2vw, 68px);
+  line-height: 1;
   letter-spacing: -0.02em;
-  overflow: visible;
 }
 
 .display-md {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(32px, 4vw, 64px);
-  line-height: 1.0;
+  font-size: clamp(26px, 3.2vw, 48px);
+  line-height: 1.05;
   letter-spacing: -0.01em;
-  overflow: visible;
 }
 
 .label {
   font-family: 'Manrope', sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .body-lg {
-  font-size: clamp(15px, 1.2vw, 18px);
-  line-height: 1.75;
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.7;
   font-weight: 300;
 }
 
 .body-sm {
   font-size: 13px;
-  line-height: 1.65;
+  line-height: 1.6;
   font-weight: 400;
 }
 
-// ── LINE MASK — key fix for cut text ────
 .line-mask {
   display: block;
   overflow: hidden;
-  // Extra space so descenders (g, p, y) never clip
   padding-bottom: 0.15em;
   margin-bottom: -0.15em;
 
@@ -90,7 +84,6 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   }
 }
 
-// ── IMAGE MASK ───────────────────────────
 .img-mask {
   overflow: hidden;
   position: relative;
@@ -100,21 +93,18 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     width: 100%;
     height: 100%;
     object-fit: cover;
-    will-change: transform;
   }
 }
 
-// ── LAYOUT ───────────────────────────────
 .page-pad { padding-inline: var(--page-pad); }
 
 .container {
   width: 100%;
-  max-width: 1680px;
+  max-width: 1440px;
   margin-inline: auto;
   padding-inline: var(--page-pad);
 }
 
-// ── COLORS ───────────────────────────────
 .text-cream { color: var(--cream); }
 .text-black-brown { color: var(--black-brown); }
 .text-taupe { color: var(--taupe); }
@@ -124,27 +114,13 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .bg-cream { background: var(--cream); }
 .bg-off-white { background: var(--off-white); }
 
-// ── SITE ─────────────────────────────────
 .site { position: relative; overflow: hidden; }
 
-// ── LENIS ────────────────────────────────
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 
-// ── SELECTION ────────────────────────────
 ::selection { background: var(--warm-brown); color: var(--cream); }
 
-// ── IMAGE BORDER RADIUS ──────────────────
-.project-card,
-.about__img-wrap,
-.fp__img-cont,
-.ie__panel img,
-.services__img-item img,
-.process__img-wrap {
-  border-radius: 8px;
-}
-
-// ── RTL / ARABIC ─────────────────────────
 .rtl {
   .display-xl, .display-lg, .display-md, .serif {
     font-family: 'Instrument Serif', 'Traditional Arabic', serif;
@@ -154,7 +130,6 @@ html.lenis, html.lenis body { height: auto; }
   }
 }
 
-// ── REDUCED MOTION ───────────────────────
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
