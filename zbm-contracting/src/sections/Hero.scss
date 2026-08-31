@@ -2,30 +2,28 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 700px;
+  min-height: 640px;
   overflow: hidden;
   background: var(--black-brown);
 
-  &__panel {
+  &__slide {
     position: absolute;
     inset: 0;
-    background: var(--black-brown);
-    z-index: 20;
-    pointer-events: none;
-  }
+    opacity: 0;
+    transition: opacity 1.4s ease;
 
-  &__img-wrap {
-    position: absolute;
-    inset: 0;
-    clip-path: inset(0 40% 0 0);
-    overflow: hidden;
-  }
+    &.active {
+      opacity: 1;
+      z-index: 1;
+    }
 
-  &__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform-origin: center center;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      animation: heroSlowZoom 8s ease-out forwards;
+    }
   }
 
   &__overlay {
@@ -33,43 +31,55 @@
     inset: 0;
     background: linear-gradient(
       to right,
-      rgba(15, 10, 7, 0.72) 0%,
-      rgba(15, 10, 7, 0.3) 60%,
-      rgba(15, 10, 7, 0.1) 100%
+      rgba(15, 10, 7, 0.75) 0%,
+      rgba(15, 10, 7, 0.35) 55%,
+      rgba(15, 10, 7, 0.15) 100%
     );
+    z-index: 2;
   }
 
   &__content {
     position: absolute;
-    bottom: clamp(60px, 10vh, 130px);
+    bottom: clamp(90px, 12vh, 140px);
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 3;
     padding-top: 80px;
   }
 
   &__eyebrow {
-    color: var(--taupe);
-    margin-bottom: 28px;
-    opacity: 0;
+    color: var(--warm-copper);
+    margin-bottom: 20px;
   }
 
   &__heading {
+    font-family: 'Instrument Serif', serif;
     color: var(--cream);
-    margin-bottom: 32px;
-    max-width: 820px;
+    margin-bottom: 24px;
+    max-width: 720px;
+    font-size: clamp(38px, 5.5vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
 
     .line-mask {
       display: block;
+      overflow: hidden;
+      padding-bottom: 0.12em;
+      margin-bottom: -0.12em;
     }
   }
 
   &__sub {
-    color: rgba(230, 228, 229, 0.7);
-    max-width: 420px;
-    margin-bottom: 44px;
-    opacity: 0;
+    color: rgba(230, 228, 229, 0.72);
+    max-width: 460px;
+    margin-bottom: 40px;
     font-size: clamp(14px, 1.1vw, 17px);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
   &__cta {
@@ -78,53 +88,80 @@
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--cream);
-    border-bottom: 1px solid rgba(230, 228, 229, 0.4);
-    padding-bottom: 6px;
-    opacity: 0;
+    color: var(--black-brown);
+    background: var(--cream);
+    padding: 14px 28px;
     cursor: pointer;
-    transition: border-color 0.3s, padding-right 0.3s;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+    border: 1px solid var(--cream);
 
     &:hover {
-      border-color: var(--cream);
-      padding-right: 8px;
+      background: var(--warm-copper);
+      border-color: var(--warm-copper);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    &--outline {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(230, 228, 229, 0.4);
+
+      &:hover {
+        background: var(--cream);
+        color: var(--black-brown);
+      }
     }
   }
 
-  &__scroll-hint {
+  &__dots {
+    position: absolute;
+    bottom: 40px;
+    left: var(--page-pad);
+    display: flex;
+    gap: 8px;
+    z-index: 4;
+
+    @media (max-width: 768px) {
+      bottom: 20px;
+    }
+  }
+
+  &__dot {
+    width: 30px;
+    height: 2px;
+    background: rgba(230, 228, 229, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: background 0.4s, width 0.4s;
+    padding: 0;
+
+    &.active {
+      background: var(--cream);
+      width: 50px;
+    }
+  }
+
+  &__counter {
     position: absolute;
     right: var(--page-pad);
     bottom: 40px;
+    color: var(--cream);
+    z-index: 4;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    z-index: 10;
-    color: var(--taupe);
+    align-items: baseline;
+    gap: 4px;
+
+    .serif { font-size: 22px; }
+    .label { color: var(--taupe); }
 
     @media (max-width: 768px) {
-      display: none;
+      bottom: 20px;
     }
   }
-
-  &__scroll-line {
-    width: 1px;
-    height: 56px;
-    background: var(--taupe);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
 }
 
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(0.6); }
-}
-
-.hero__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+@keyframes heroSlowZoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
 }
