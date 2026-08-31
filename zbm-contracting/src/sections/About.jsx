@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../hooks/useLanguage.jsx';
 import './About.scss';
 
-const IMG1 = 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=90&auto=format&fit=crop';
+const IMG1 = '/images/zmb_9.png';
 
 export default function About() {
   const { t } = useLanguage();
