@@ -1,0 +1,66 @@
+.fbtns {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    right: 14px;
+    bottom: 14px;
+    gap: 10px;
+  }
+}
+
+.fbtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 40px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  }
+
+  &--wa {
+    background: #25D366;
+
+    &:hover { background: #1ebe57; }
+  }
+
+  &--call {
+    background: var(--warm-copper);
+
+    &:hover { background: var(--deep-brown); }
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px;
+    font-size: 0;
+    letter-spacing: 0;
+
+    svg { width: 22px; height: 22px; }
+
+    span { display: none; }
+  }
+}
