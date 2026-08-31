@@ -25,12 +25,17 @@
     gap: 20px;
   }
 
-  // Logo — NO white background, just show the gif
+  // Larger footer logo
   &__logo {
-    height: 68px;
-    width: auto;
+    width: clamp(220px, 18vw, 320px);
+    height: auto;
     display: block;
-    // The gif has transparent bg — just display it plain
+    object-fit: contain;
+    object-position: left center;
+
+    @media (max-width: 768px) {
+      width: 220px;
+    }
   }
 
   &__tagline {
@@ -99,6 +104,9 @@
 
   &__wordmark-wrap {
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   &__wordmark {
@@ -108,7 +116,10 @@
     white-space: nowrap;
     line-height: 0.88;
     letter-spacing: -0.02em;
+    text-align: center;
+    width: 100%;
     padding-inline: var(--page-pad);
+    margin: 0 auto;
     opacity: 0;
   }
 
