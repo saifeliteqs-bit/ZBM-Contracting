@@ -1,28 +1,34 @@
 .fab {
   position: fixed;
-  right: 24px;
-  bottom: 30px;
+  right: 20px;
+  bottom: 24px;
   z-index: 95;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 14px;
+  align-items: center;
+  gap: 12px;
+
+  // Strictly contain SVGs to prevent overflow
+  svg {
+    display: block;
+    flex-shrink: 0;
+  }
 
   @media (max-width: 600px) {
-    right: 16px;
-    bottom: 20px;
+    right: 14px;
+    bottom: 18px;
   }
 
   &__actions {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
     opacity: 0;
-    transform: translateY(20px) scale(0.85);
+    transform: translateY(15px) scale(0.85);
     pointer-events: none;
     transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transform-origin: bottom right;
+    transform-origin: bottom center;
   }
 
   &--open &__actions {
@@ -32,68 +38,44 @@
   }
 
   &__action {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
+    justify-content: center;
     color: #fff;
-    transform: translateX(20px);
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    transform: translateY(15px);
     opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.3s,
+                box-shadow 0.3s;
+    // Contain the SVG
+    overflow: hidden;
+    flex-shrink: 0;
   }
 
   &--open &__action {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
 
     &:nth-child(1) { transition-delay: 0.05s; }
     &:nth-child(2) { transition-delay: 0.12s; }
-    &:nth-child(3) { transition-delay: 0.2s; }
+    &:nth-child(3) { transition-delay: 0.19s; }
   }
 
-  &__label {
-    font-family: 'Manrope', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    background: var(--black-brown);
-    color: var(--cream);
-    padding: 8px 14px;
-    border-radius: 30px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
+  &__action:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
   }
 
-  &__ico {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s, box-shadow 0.3s;
+  &__action--wa { background: #25D366; }
+  &__action--call { background: var(--warm-copper); }
+  &__action--mail { background: var(--deep-brown); }
 
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  &__action:hover &__ico {
-    transform: scale(1.1);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
-  }
-
-  &__action--wa &__ico { background: #25D366; }
-  &__action--call &__ico { background: var(--warm-copper); }
-  &__action--mail &__ico { background: var(--deep-brown); }
-
-  // Main pulse button
+  // Main button
   &__main {
     position: relative;
     width: 60px;
@@ -106,28 +88,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 24px rgba(151, 77, 40, 0.4);
+    box-shadow: 0 8px 22px rgba(151, 77, 40, 0.4);
     transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    // SVG on top of pulse
+    svg {
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s;
+    }
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(151, 77, 40, 0.5);
+      box-shadow: 0 12px 28px rgba(151, 77, 40, 0.5);
     }
   }
 
-  &__main-ico {
-    position: relative;
-    z-index: 2;
-    display: flex;
-
-    svg {
-      width: 24px;
-      height: 24px;
-      transition: transform 0.3s;
-    }
-  }
-
-  &--open &__main-ico svg {
+  &--open &__main svg {
     transform: rotate(90deg);
   }
 
@@ -136,12 +113,11 @@
     inset: 0;
     border-radius: 50%;
     background: var(--warm-copper);
-    opacity: 0.6;
+    opacity: 0.55;
     animation: fabPulse 2s ease-out infinite;
+    z-index: 1;
 
-    &--2 {
-      animation-delay: 1s;
-    }
+    &--2 { animation-delay: 1s; }
   }
 
   &--open &__pulse {
@@ -153,10 +129,10 @@
 @keyframes fabPulse {
   0% {
     transform: scale(1);
-    opacity: 0.6;
+    opacity: 0.55;
   }
   100% {
-    transform: scale(1.8);
+    transform: scale(1.7);
     opacity: 0;
   }
 }
