@@ -4,8 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../hooks/useLanguage.jsx';
 import './Statement.scss';
 
-const STMT_IMG = 'https://images.unsplash.com/photo-1618219944342-824e40a13285?w=1200&q=90&auto=format&fit=crop';
-const STMT_IMG2 = 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=90&auto=format&fit=crop';
+const STMT_IMG = '/images/zbm_2.png';
+const STMT_IMG2 = '/images/zbm_17.png';
 
 export default function Statement() {
   const { t, isAr } = useLanguage();
