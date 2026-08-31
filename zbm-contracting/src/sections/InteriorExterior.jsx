@@ -4,8 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { siteContent } from '../data/siteContent';
 import './InteriorExterior.scss';
 
-const INTERIOR_IMG = 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=90&auto=format&fit=crop';
-const EXTERIOR_IMG = 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1600&q=90&auto=format&fit=crop';
+const INTERIOR_IMG = '/images/zmb_9.png';
+const EXTERIOR_IMG = '/images/zbm_10.png';
 
 export default function InteriorExterior() {
   const sectionRef = useRef(null);
