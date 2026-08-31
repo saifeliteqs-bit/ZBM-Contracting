@@ -2,11 +2,9 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { services } from '../data/services';
-import { useLanguage } from '../hooks/useLanguage.jsx';
 import './Services.scss';
 
 export default function Services() {
-  const { t } = useLanguage();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +19,7 @@ export default function Services() {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 75%',
+            start: 'top 80%',
           },
         }
       );
@@ -33,12 +31,10 @@ export default function Services() {
     <section className="services" ref={sectionRef} id="services">
       <div className="container">
         <div className="services__header">
-          <p className="label text-muted">02 — Services</p>
-          <h2 className="services__title">What we create.</h2>
-          <p className="services__sub body-lg">
-            From full villa renovations to landscaping and turnkey solutions —
-            our 18 core services cover every stage of your project.
-          </p>
+          <p className="services__eyebrow">OUR SERVICES</p>
+          <h2 className="services__title">
+            Comprehensive <span className="accent">Construction</span> Solutions
+          </h2>
         </div>
 
         <div className="services__grid">
@@ -46,16 +42,18 @@ export default function Services() {
             <div key={i} className="svc-card">
               <div className="svc-card__img">
                 <img src={svc.image} alt={svc.title} loading="lazy" />
-                <span className="svc-card__cat label">{svc.category}</span>
               </div>
               <div className="svc-card__body">
-                <span className="svc-card__num label text-muted">{svc.number}</span>
-                <h3 className="svc-card__title serif">{svc.title}</h3>
-                <p className="svc-card__desc body-sm">{svc.description}</p>
-                <a href="#contact" className="svc-card__link">Get a Quote →</a>
+                <h3 className="svc-card__title">{svc.title}</h3>
+                <p className="svc-card__desc">{svc.description}</p>
+                <a href="#contact" className="svc-card__link">READ MORE →</a>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="services__cta-wrap">
+          <a href="#contact" className="services__cta">VIEW ALL SERVICES →</a>
         </div>
       </div>
     </section>
