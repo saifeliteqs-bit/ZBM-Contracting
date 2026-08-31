@@ -1,67 +1,50 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projects } from '../data/projects';
 import './Projects.scss';
 
 export default function Projects() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.fromTo('.proj-card',
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1, y: 0,
-          duration: 0.7,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-          },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const showcaseProjects = [...projects, ...projects];
 
   return (
-    <section className="projects" ref={sectionRef} id="projects">
-      <div className="container">
-        <div className="projects__header">
-          <p className="projects__eyebrow">OUR CRAFTSMANSHIP</p>
-          <h2 className="projects__title">Featured Projects</h2>
-          <p className="projects__sub">
-            A selection of residential and commercial projects delivered across Dubai and the UAE.
-          </p>
-        </div>
+    <section className="projects" id="projects">
+      <div className="projects__header container">
+        <p className="projects__eyebrow">OUR CRAFTSMANSHIP</p>
+        <h2 className="projects__title">Featured Projects</h2>
+        <p className="projects__sub">
+          A selection of residential and commercial projects delivered across Dubai and the UAE.
+        </p>
+      </div>
 
-        <div className="projects__grid">
-          {projects.map((proj) => (
-            <div key={proj.id} className="proj-card">
-              <div className="proj-card__img">
-                <img src={proj.image} alt={proj.title} loading="lazy" />
-                <div className="proj-card__overlay">
-                  <span className="proj-card__view">View Project →</span>
-                </div>
-              </div>
-              <div className="proj-card__info">
-                <h3 className="proj-card__title">{proj.title}</h3>
-                <p className="proj-card__meta">
-                  <span>{proj.location}</span>
-                  <span className="proj-card__dot">·</span>
-                  <span>{proj.year}</span>
+      <div className="projects__showcase" aria-label="Featured projects showcase">
+        <div className="projects__track">
+          {showcaseProjects.map((proj, index) => (
+            <article
+              className="project-showcase-card"
+              key={`${proj.id}-${index}`}
+              aria-hidden={index >= projects.length ? 'true' : undefined}
+            >
+              <img
+                className="project-showcase-card__image"
+                src={proj.image}
+                alt={index < projects.length ? proj.title : ''}
+                loading={index < 4 ? 'eager' : 'lazy'}
+              />
+
+              <div className="project-showcase-card__shade" />
+
+              <div className="project-showcase-card__content">
+                <span className="project-showcase-card__category">{proj.category}</span>
+                <h3 className="project-showcase-card__title">{proj.title}</h3>
+                <p className="project-showcase-card__meta">
+                  {proj.location} <span>·</span> {proj.year}
                 </p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
+      </div>
 
-        <div className="projects__cta-wrap">
-          <a href="#contact" className="projects__cta">START YOUR PROJECT →</a>
-        </div>
+      <div className="projects__cta-wrap">
+        <a href="#contact" className="projects__cta">START YOUR PROJECT →</a>
       </div>
     </section>
   );
