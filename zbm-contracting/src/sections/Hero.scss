@@ -6,6 +6,9 @@
   overflow: hidden;
   background: var(--black-brown);
 
+  // Subtle divider between Hero and About section
+  border-bottom: 1px solid rgba(151, 77, 40, 0.28);
+
   &__slide {
     position: absolute;
     inset: 0;
