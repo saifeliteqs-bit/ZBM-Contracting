@@ -13,97 +13,39 @@ export default function About() {
   const h1r = useRef(null);
   const h2r = useRef(null);
 
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
     const ctx = gsap.context(() => {
       [h1r, h2r].forEach((el, i) => {
         if (!el.current) return;
-        gsap.fromTo(
-          el.current,
-          { yPercent: 110 },
-          {
-            yPercent: 0,
-            duration: 1,
-            ease: 'power3.out',
-            delay: i * 0.12,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 72%',
-            },
-          }
-        );
+        gsap.fromTo(el.current, { yPercent: 110 }, {
+          yPercent: 0, duration: 1, ease: 'power3.out', delay: i * 0.12,
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
+        });
       });
-
       if (imgRef.current) {
-        gsap.fromTo(
-          imgRef.current,
-          { scale: 1.08 },
-          {
-            scale: 1,
-            duration: 1.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 75%',
-            },
-          }
-        );
+        gsap.fromTo(imgRef.current, { scale: 1.08 }, {
+          scale: 1, duration: 1.8, ease: 'power3.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
+        });
       }
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
   return (
     <section className="about" ref={sectionRef} id="about">
-      <div className="about__background" aria-hidden="true">
-        <img ref={imgRef} src={IMG1} alt="" />
-      </div>
-
-      <div className="about__overlay" aria-hidden="true" />
-
       <div className="about__inner container">
-        <div className="about__content">
-          <span className="about__accent" aria-hidden="true" />
-
-          <p className="label about__label">{t.about.label}</p>
-
-          <h2 className="about__heading display-lg">
-            {t.about.heading.map((line, i) => (
-              <span className="line-mask" key={i}>
-                <span ref={i === 0 ? h1r : h2r}>{line}</span>
-              </span>
-            ))}
+        <div className="about__left">
+          <p className="label about__label text-muted">01 — About ZBM</p>
+          <h2 className="about__heading">
+            <span className="line-mask"><span ref={h1r}>Every space begins</span></span>
+            <span className="line-mask"><span ref={h2r}>with an <span className="accent">idea</span>.</span></span>
           </h2>
-
           <div className="about__body">
-            <p className="body-lg">{t.about.body}</p>
-            <p className="body-lg">{t.about.body2}</p>
+            <p>ZBM Contracting brings together design, material, craftsmanship and execution to create refined interiors and distinctive exteriors. From first concept through final detail, we treat every project as an opportunity to create something that endures.</p>
+            <p>Based in Dubai, UAE, we work across residential and commercial environments — delivering spaces that are both beautiful and purposeful. Our team combines architectural vision with on-the-ground execution capability.</p>
           </div>
-
-          <div className="about__actions">
-            <button
-              type="button"
-              className="about__btn about__btn--primary"
-              onClick={() => scrollToSection('services')}
-            >
-              Explore Services
-            </button>
-
-            <button
-              type="button"
-              className="about__btn about__btn--outline"
-              onClick={() => scrollToSection('contact')}
-            >
-              Contact Us
-            </button>
-          </div>
-
           <div className="about__highlights">
             <div className="about__highlight">
               <span className="about__highlight-num">120+</span>
@@ -114,9 +56,15 @@ export default function About() {
               <span className="about__highlight-label">Years Experience</span>
             </div>
             <div className="about__highlight">
-              <span className="about__highlight-num">2</span>
-              <span className="about__highlight-label">Core Disciplines</span>
+              <span className="about__highlight-num">18</span>
+              <span className="about__highlight-label">Core Services</span>
             </div>
+          </div>
+        </div>
+
+        <div className="about__right">
+          <div className="about__img-wrap">
+            <img ref={imgRef} src={IMG1} alt="ZBM premium interior design" />
           </div>
         </div>
       </div>
