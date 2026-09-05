@@ -9,19 +9,19 @@ let lenisInstance = null;
 export function useLenis() {
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
 
-    // Native scrolling is smoother and more reliable on touch devices.
-    if (reduceMotion || coarsePointer) {
+    if (reduceMotion) {
       lenisInstance = null;
       return undefined;
     }
 
+    // Smooth for both desktop and touch (better than native jerky feel)
     const lenis = new Lenis({
-      lerp: 0.085,
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
       syncTouch: false,
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -39,11 +39,13 @@ export function useLenis() {
 
     return () => {
       gsap.ticker.remove(raf);
-      lenis.off?.('scroll', onScroll);
+      lenis.off('scroll', onScroll);
       lenis.destroy();
-      if (lenisInstance === lenis) lenisInstance = null;
+      lenisInstance = null;
     };
   }, []);
 }
 
-export function getLenis() { return lenisInstance; }
+export function getLenis() {
+  return lenisInstance;
+}
