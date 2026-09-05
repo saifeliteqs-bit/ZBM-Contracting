@@ -10,7 +10,6 @@ import Stats from './sections/Stats';
 import Services from './sections/Services';
 import WhyChoose from './sections/WhyChoose';
 import Projects from './sections/Projects';
-import ProjectDetail from './sections/ProjectDetail';
 import Process from './sections/Process';
 import CTABanner from './sections/CTABanner';
 import Contact from './sections/Contact';
@@ -34,7 +33,6 @@ export default function App() {
           <Services />
           <WhyChoose />
           <Projects />
-          <ProjectDetail />
           <Process />
           <CTABanner />
           <Contact />
