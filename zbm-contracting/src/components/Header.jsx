@@ -24,6 +24,11 @@ export default function Header() {
       navigate('/about');
       return;
     }
+    // Handle page navigation for 'projects'
+    if (id === 'projects') {
+      navigate('/projects');
+      return;
+    }
     // If we're not on home page, navigate home first then scroll
     if (location.pathname !== '/') {
       navigate('/');
