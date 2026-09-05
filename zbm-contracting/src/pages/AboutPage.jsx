@@ -10,7 +10,7 @@ const values = [
   {
     number: '01',
     title: 'Craftsmanship First',
-    desc: 'Every joint, every edge, every finish is executed with the care of a craftsman who takes personal pride in the result. We don't cut corners — we refine them.',
+    desc: "Every joint, every edge, every finish is executed with the care of a craftsman who takes personal pride in the result. We don't cut corners — we refine them.",
   },
   {
     number: '02',
@@ -20,7 +20,7 @@ const values = [
   {
     number: '03',
     title: 'Design With Intent',
-    desc: 'We don't decorate — we design. Every material, layout and detail is chosen for a reason: to serve the space, the people who use it, and the vision behind it.',
+    desc: "We don't decorate — we design. Every material, layout and detail is chosen for a reason: to serve the space, the people who use it, and the vision behind it.",
   },
   {
     number: '04',
@@ -181,7 +181,7 @@ export default function AboutPage() {
               disciplined timelines and refined finishing.
             </p>
             <p>
-              What hasn't changed is our founding principle: every space we build is an opportunity
+              What has not changed is our founding principle: every space we build is an opportunity
               to create something that endures — something the people who live and work in it can
               feel proud of for years to come.
             </p>
@@ -269,7 +269,7 @@ export default function AboutPage() {
               One team. Every discipline. Under one roof.
             </h2>
             <p className="about-team__sub">
-              We don't outsource the work that matters. Our design, management and
+              We do not outsource the work that matters. Our design, management and
               execution teams work together daily — so nothing gets lost in translation.
             </p>
           </div>
@@ -300,7 +300,7 @@ export default function AboutPage() {
             Ready to build something worth remembering?
           </h2>
           <p className="about-cta__sub">
-            Whether it's a villa renovation, a commercial fit-out or a complete turnkey
+            Whether it is a villa renovation, a commercial fit-out or a complete turnkey
             project — let's talk about what you're looking for.
           </p>
           <div className="about-cta__actions">
