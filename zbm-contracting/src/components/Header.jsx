@@ -4,10 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../hooks/useLanguage.jsx';
 import { getLenis } from '../hooks/useLenis';
 import { services } from '../data/services';
-import logo from '../assets/zbm-logo.png';
 import './Header.scss';
 
-const LOGO = logo;
+const LOGO = '/images/17618.gif';
 
 export default function Header() {
   const headerRef = useRef(null);
@@ -26,10 +25,9 @@ export default function Header() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const intro = gsap.from(headerRef.current, { opacity: 0, y: -18, duration: .8, delay: .2, ease: 'power3.out' });
+    const intro = gsap.from(headerRef.current, { opacity: 0, y: -18, duration: 0.8, delay: 0.2, ease: 'power3.out' });
     const trigger = ScrollTrigger.create({
-      start: 80,
-      end: 'max',
+      start: 80, end: 'max',
       onUpdate: () => setScrolled(window.scrollY > 80),
     });
     return () => { intro.kill(); trigger.kill(); };
@@ -38,11 +36,11 @@ export default function Header() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
-      gsap.to(menuRef.current, { opacity: 1, duration: .3 });
-      gsap.fromTo('.menu-link', { y: 52, opacity: 0 }, { y: 0, opacity: 1, duration: .55, stagger: .07, delay: .08, ease: 'power3.out' });
+      gsap.to(menuRef.current, { opacity: 1, duration: 0.3 });
+      gsap.fromTo('.menu-link', { y: 52, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, stagger: 0.07, delay: 0.08, ease: 'power3.out' });
     } else {
       document.body.style.overflow = '';
-      if (menuRef.current) gsap.to(menuRef.current, { opacity: 0, duration: .22 });
+      if (menuRef.current) gsap.to(menuRef.current, { opacity: 0, duration: 0.22 });
     }
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
@@ -81,7 +79,9 @@ export default function Header() {
           <div className="header__right">
             <button className="lang-toggle" onClick={toggle}>{lang === 'en' ? 'عربي' : 'EN'}</button>
             <button className="header__cta" onClick={() => goTo('contact')}>{t.nav.cta} ↗</button>
-            <button className={`header__burger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu"><span /><span /></button>
+            <button className={`header__burger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+              <span /><span />
+            </button>
           </div>
         </div>
       </header>
@@ -105,7 +105,9 @@ export default function Header() {
             ))}
           </nav>
           <div className="mobile-menu__footer">
-            <button className="lang-toggle lang-toggle--mobile" onClick={toggle}>{lang === 'en' ? 'عربي — Arabic' : 'EN — English'}</button>
+            <button className="lang-toggle lang-toggle--mobile" onClick={toggle}>
+              {lang === 'en' ? 'عربي — Arabic' : 'EN — English'}
+            </button>
           </div>
         </div>
       </div>
