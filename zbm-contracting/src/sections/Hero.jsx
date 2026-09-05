@@ -6,25 +6,25 @@ import './Hero.scss';
 
 const slides = [
   {
-    image: '/images/hero/hero-01.webp',
+    image: '/images/hero-01.webp',
     eyebrow: 'Interior · Exterior · Architecture',
     heading: ['Spaces shaped', 'around the way', 'you live.'],
     sub: 'ZBM creates refined interior and exterior environments through thoughtful design, execution and craftsmanship.',
   },
   {
-    image: '/images/hero/hero-02.webp',
+    image: '/images/hero-02.webp',
     eyebrow: 'Interior Design · Fit-Out',
     heading: ['Interiors made', 'for the way', 'you live.'],
     sub: 'Thoughtful layouts, refined materials and precise execution come together in spaces that feel effortless.',
   },
   {
-    image: '/images/hero/hero-03.webp',
+    image: '/images/hero-03.webp',
     eyebrow: 'Exterior · Pool · Landscape',
     heading: ['Exteriors that', 'welcome you', 'home.'],
     sub: 'Pools, gardens and outdoor architecture designed as a natural extension of the spaces within.',
   },
   {
-    image: '/images/hero/hero-04.webp',
+    image: '/images/hero-04.webp',
     eyebrow: 'Commercial · Fit-Out',
     heading: ['Spaces designed', 'to work', 'beautifully.'],
     sub: 'Commercial interiors shaped around brand, performance and a memorable everyday experience.',
