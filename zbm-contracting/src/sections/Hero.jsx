@@ -4,18 +4,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { getLenis } from '../hooks/useLenis';
 import './Hero.scss';
 
+// Reordered: lighter/brighter images first
 const slides = [
-  {
-    image: '/images/hero-01.webp',
-    eyebrow: 'Interior · Exterior · Architecture',
-    heading: ['Spaces shaped', 'around the way', 'you live.'],
-    sub: 'ZBM creates refined interior and exterior environments through thoughtful design, execution and craftsmanship.',
-  },
   {
     image: '/images/hero-02.webp',
     eyebrow: 'Interior Design · Fit-Out',
-    heading: ['Interiors made', 'for the way', 'you live.'],
-    sub: 'Thoughtful layouts, refined materials and precise execution come together in spaces that feel effortless.',
+    heading: ['Spaces shaped', 'around the way', 'you live.'],
+    sub: 'ZBM creates refined interior and exterior environments through thoughtful design, execution and craftsmanship.',
   },
   {
     image: '/images/hero-03.webp',
@@ -28,6 +23,12 @@ const slides = [
     eyebrow: 'Commercial · Fit-Out',
     heading: ['Spaces designed', 'to work', 'beautifully.'],
     sub: 'Commercial interiors shaped around brand, performance and a memorable everyday experience.',
+  },
+  {
+    image: '/images/hero-01.webp',
+    eyebrow: 'Interior · Exterior · Architecture',
+    heading: ['Interiors made', 'for the way', 'you live.'],
+    sub: 'Thoughtful layouts, refined materials and precise execution come together in spaces that feel effortless.',
   },
 ];
 
@@ -89,7 +90,7 @@ export default function Hero() {
     <section className="hero" ref={heroRef} id="hero">
       {slides.map((slide, i) => (
         <div key={slide.image} className={`hero__slide ${activeSlide === i ? 'active' : ''}`}>
-          <img src={slide.image} alt={slide.eyebrow} fetchPriority={i === 0 ? 'high' : 'auto'} />
+          <img src={slide.image} alt={slide.eyebrow} fetchPriority={i === 0 ? 'high' : 'auto'} loading={i === 0 ? 'eager' : 'lazy'} />
         </div>
       ))}
       <div className="hero__overlay" />
