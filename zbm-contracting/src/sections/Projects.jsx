@@ -12,6 +12,14 @@ function ProjectCard({ project }) {
     setActive((current) => (current + direction + project.images.length) % project.images.length);
   };
 
+  // Auto-advance carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((c) => (c + 1) % project.images.length);
+    }, 5500);
+    return () => clearInterval(timer);
+  }, [project.images.length]);
+
   return (
     <article className="proj-card">
       <div
@@ -32,20 +40,30 @@ function ProjectCard({ project }) {
           ))}
         </div>
 
-        <button className="proj-card__arrow proj-card__arrow--prev" onClick={(e) => { e.stopPropagation(); go(-1); }} aria-label={`Previous image for ${project.title}`}>‹</button>
-        <button className="proj-card__arrow proj-card__arrow--next" onClick={(e) => { e.stopPropagation(); go(1); }} aria-label={`Next image for ${project.title}`}>›</button>
+        <button
+          className="proj-card__arrow proj-card__arrow--prev"
+          onClick={(e) => { e.stopPropagation(); go(-1); }}
+          aria-label={`Previous image for ${project.title}`}
+        >‹</button>
+        <button
+          className="proj-card__arrow proj-card__arrow--next"
+          onClick={(e) => { e.stopPropagation(); go(1); }}
+          aria-label={`Next image for ${project.title}`}
+        >›</button>
 
         <div className="proj-card__dots" aria-label={`${project.title} image selector`}>
           {project.images.map((_, i) => (
-            <button key={i} className={i === active ? 'active' : ''} onClick={(e) => { e.stopPropagation(); setActive(i); }} aria-label={`Show image ${i + 1}`} />
+            <button
+              key={i}
+              className={i === active ? 'active' : ''}
+              onClick={(e) => { e.stopPropagation(); setActive(i); }}
+              aria-label={`Show image ${i + 1}`}
+            />
           ))}
         </div>
-
-        <div className="proj-card__overlay"><span className="proj-card__view">View Project →</span></div>
       </div>
 
       <div className="proj-card__info">
-        <span className="proj-card__service">{project.category}</span>
         <h3 className="proj-card__title">{project.title}</h3>
         <p className="proj-card__meta">{project.descriptor}</p>
       </div>
@@ -62,10 +80,9 @@ export default function Projects() {
       gsap.fromTo('.proj-card',
         { opacity: 0, y: 34 },
         {
-          opacity: 1,
-          y: 0,
-          duration: .65,
-          stagger: .055,
+          opacity: 1, y: 0,
+          duration: 0.65,
+          stagger: 0.055,
           ease: 'power3.out',
           scrollTrigger: { trigger: sectionRef.current, start: 'top 82%', once: true },
         }
@@ -79,15 +96,21 @@ export default function Projects() {
       <div className="container">
         <div className="projects__header">
           <p className="projects__eyebrow">OUR CRAFTSMANSHIP</p>
-          <h2 className="projects__title">Featured Projects</h2>
-          <p className="projects__sub">A curated showcase across every ZBM service — from interiors and villas to technical works and exterior spaces.</p>
+          <h2 className="projects__title">
+            Featured <span className="accent">Projects</span>
+          </h2>
+          <p className="projects__sub">
+            A curated showcase across every ZBM service — one dedicated project for each of our 18 core capabilities.
+          </p>
         </div>
 
         <div className="projects__grid">
           {projects.map((project) => <ProjectCard key={project.id} project={project} />)}
         </div>
 
-        <div className="projects__cta-wrap"><a href="#contact" className="projects__cta">START YOUR PROJECT →</a></div>
+        <div className="projects__cta-wrap">
+          <a href="#contact" className="projects__cta">START YOUR PROJECT →</a>
+        </div>
       </div>
     </section>
   );
