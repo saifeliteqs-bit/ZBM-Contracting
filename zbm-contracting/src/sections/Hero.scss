@@ -36,6 +36,16 @@
       rgba(15, 10, 7, 0.12) 100%
     );
     z-index: 2;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      mask-image: linear-gradient(to right, black 0%, black 25%, transparent 55%);
+      -webkit-mask-image: linear-gradient(to right, black 0%, black 25%, transparent 55%);
+    }
   }
 
   &__content {
