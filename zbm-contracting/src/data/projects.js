@@ -1,4 +1,4 @@
-const imgs = (number) => [1, 2, 3, 4].map((i) => `/images/projects/project-${number}-${i}.webp`);
+const imgs = (number) => [1, 2, 3, 4].map((i) => `/images/project-${number}-${i}.webp`);
 
 export const projects = [
   { id: 1, serviceNumber: '01', title: 'Modern Villa Transformation', descriptor: 'Residential Transformation', category: 'Full Villa Renovation', images: imgs('01') },
@@ -27,7 +27,7 @@ export const featuredProject = {
   categories: ['Turnkey Renovation', 'Interior', 'Exterior', 'Pool & Landscaping'],
   year: '',
   description: 'A complete villa transformation bringing interior detailing, exterior architecture, pool works and landscaping together as one coordinated design and construction experience.',
-  image: '/images/hero/hero-01.webp',
+  image: '/images/hero-01.webp',
 };
 
 export const processSteps = [
