@@ -29,6 +29,11 @@ export default function Header() {
       navigate('/projects');
       return;
     }
+    // Handle page navigation for 'contact'
+    if (id === 'contact') {
+      navigate('/contact');
+      return;
+    }
     // If we're not on home page, navigate home first then scroll
     if (location.pathname !== '/') {
       navigate('/');
