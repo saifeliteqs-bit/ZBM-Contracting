@@ -7,6 +7,7 @@ export const projects = [
   { id: 6,  serviceNumber: '06', title: 'Resort-Style Pool',             descriptor: 'Outdoor Living',               image: '/images/project-06-1.webp' },
   { id: 7,  serviceNumber: '07', title: 'Contemporary Garden',           descriptor: 'Landscape Design',             image: '/images/project-07-1.webp' },
   { id: 8,  serviceNumber: '08', title: 'Modern Outdoor Pergola',        descriptor: 'Shade & Outdoor Space',        image: '/images/project-08-1.webp' },
+  { id: 9,  serviceNumber: '09', title: 'Architectural Aluminum Facade', descriptor: 'Facade Detailing',             image: '/images/project-09-1.webp' },
 ];
 
 export const processSteps = [
