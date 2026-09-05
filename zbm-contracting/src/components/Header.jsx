@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../hooks/useLanguage.jsx';
@@ -14,8 +15,28 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(null);
   const { t, lang, toggle } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const goTo = (id, block = 'start') => {
+    // Handle page navigation for 'about'
+    if (id === 'about') {
+      navigate('/about');
+      return;
+    }
+    // If we're not on home page, navigate home first then scroll
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const target = document.getElementById(id);
+        if (target) {
+          const lenis = getLenis();
+          if (lenis) lenis.scrollTo(target, { offset: block === 'center' ? -180 : -78, duration: 1.05 });
+          else target.scrollIntoView({ behavior: 'smooth', block });
+        }
+      }, 300);
+      return;
+    }
     const target = document.getElementById(id);
     if (!target) return;
     const lenis = getLenis();
@@ -51,7 +72,7 @@ export default function Header() {
     <>
       <header ref={headerRef} className={`header ${scrolled ? 'header--scrolled' : ''}`}>
         <div className="header__inner">
-          <button className="header__logo" onClick={() => goTo('hero')} aria-label="Go to top">
+          <button className="header__logo" onClick={() => { navigate('/'); window.scrollTo(0, 0); }} aria-label="Go to top">
             <img src={LOGO} alt="ZBM Contracting" />
           </button>
 
