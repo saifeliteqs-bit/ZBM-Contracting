@@ -4,9 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../hooks/useLanguage.jsx';
 import { getLenis } from '../hooks/useLenis';
 import { services } from '../data/services';
+import logo from '../assets/zbm-logo.png';
 import './Header.scss';
 
-const LOGO = '/images/zbm-logo-clean.png';
+const LOGO = logo;
 
 export default function Header() {
   const headerRef = useRef(null);
