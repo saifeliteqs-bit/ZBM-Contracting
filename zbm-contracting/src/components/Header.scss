@@ -30,17 +30,17 @@
     cursor: pointer;
 
     img {
-      height: 58px;
+      height: 90px;
       width: auto;
       display: block;
       filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
       transition: height 0.3s;
 
       @media (max-width: 900px) {
-        height: 48px;
+        height: 72px;
       }
       @media (max-width: 480px) {
-        height: 42px;
+        height: 60px;
       }
     }
 
