@@ -7,16 +7,6 @@ export const projects = [
   { id: 6,  serviceNumber: '06', title: 'Resort-Style Pool',             descriptor: 'Outdoor Living',               image: '/images/project-06-1.webp' },
   { id: 7,  serviceNumber: '07', title: 'Contemporary Garden',           descriptor: 'Landscape Design',             image: '/images/project-07-1.webp' },
   { id: 8,  serviceNumber: '08', title: 'Modern Outdoor Pergola',        descriptor: 'Shade & Outdoor Space',        image: '/images/project-08-1.webp' },
-  { id: 9,  serviceNumber: '09', title: 'Architectural Aluminum Facade', descriptor: 'Facade Detailing',             image: '/images/project-09-1.webp' },
-  { id: 10, serviceNumber: '10', title: 'Frameless Glass Office',        descriptor: 'Glass Interior',               image: '/images/project-10-1.webp' },
-  { id: 11, serviceNumber: '11', title: 'Refined Surface Finish',        descriptor: 'Interior & Exterior Finish',   image: '/images/project-11-1.webp' },
-  { id: 12, serviceNumber: '12', title: 'Premium Stone Flooring',        descriptor: 'Floor & Tile Finish',          image: '/images/project-12-1.webp' },
-  { id: 13, serviceNumber: '13', title: 'Sculpted Ceiling Detail',       descriptor: 'Decorative Finishing',         image: '/images/project-13-1.webp' },
-  { id: 14, serviceNumber: '14', title: 'Integrated Lighting System',    descriptor: 'Smart Electrical',             image: '/images/project-14-1.webp' },
-  { id: 15, serviceNumber: '15', title: 'Climate-Controlled Interior',   descriptor: 'Mechanical Integration',       image: '/images/project-15-1.webp' },
-  { id: 16, serviceNumber: '16', title: 'Wet-Area Protection System',    descriptor: 'Technical Protection',         image: '/images/project-16-1.webp' },
-  { id: 17, serviceNumber: '17', title: 'Modern Entrance & Gate',        descriptor: 'Boundary Design',              image: '/images/project-17-1.webp' },
-  { id: 18, serviceNumber: '18', title: 'Complete Turnkey Residence',    descriptor: 'Design & Build',               image: '/images/project-18-1.webp' },
 ];
 
 export const processSteps = [
