@@ -7,6 +7,7 @@ import FloatingButtons from './components/FloatingButtons';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import ProjectsPage from './pages/ProjectsPage';
 
 import './styles/global.scss';
 
@@ -24,6 +25,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
           </Routes>
         </main>
 
