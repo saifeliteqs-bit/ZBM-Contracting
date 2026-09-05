@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { services } from '../data/services';
+import { Link } from 'react-router-dom';
 import './Services.scss';
 
 export default function Services() {
@@ -46,7 +47,11 @@ export default function Services() {
               <div className="svc-card__body">
                 <h3 className="svc-card__title">{svc.title}</h3>
                 <p className="svc-card__desc">{svc.description}</p>
-                <a href="#contact" className="svc-card__link">READ MORE →</a>
+                {svc.number === '01' ? (
+                  <Link to="/services/full-villa-renovation" className="svc-card__link">READ MORE →</Link>
+                ) : (
+                  <a href="#contact" className="svc-card__link">READ MORE →</a>
+                )}
               </div>
             </div>
           ))}
