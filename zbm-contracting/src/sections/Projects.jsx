@@ -1,68 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projects } from '../data/projects';
 import './Projects.scss';
 
 function ProjectCard({ project }) {
-  const [active, setActive] = useState(0);
-  const touchStart = useRef(null);
-
-  const go = (direction) => {
-    setActive((current) => (current + direction + project.images.length) % project.images.length);
-  };
-
-  // Auto-advance carousel
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((c) => (c + 1) % project.images.length);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [project.images.length]);
-
   return (
     <article className="proj-card">
-      <div
-        className="proj-card__media"
-        onTouchStart={(e) => { touchStart.current = e.touches[0].clientX; }}
-        onTouchEnd={(e) => {
-          if (touchStart.current == null) return;
-          const delta = e.changedTouches[0].clientX - touchStart.current;
-          if (Math.abs(delta) > 40) go(delta > 0 ? -1 : 1);
-          touchStart.current = null;
-        }}
-      >
-        <div className="proj-card__track" style={{ transform: `translate3d(-${active * 100}%, 0, 0)` }}>
-          {project.images.map((image, i) => (
-            <div className="proj-card__slide" key={image}>
-              <img src={image} alt={`${project.title} view ${i + 1}`} loading="lazy" />
-            </div>
-          ))}
-        </div>
-
-        <button
-          className="proj-card__arrow proj-card__arrow--prev"
-          onClick={(e) => { e.stopPropagation(); go(-1); }}
-          aria-label={`Previous image for ${project.title}`}
-        >‹</button>
-        <button
-          className="proj-card__arrow proj-card__arrow--next"
-          onClick={(e) => { e.stopPropagation(); go(1); }}
-          aria-label={`Next image for ${project.title}`}
-        >›</button>
-
-        <div className="proj-card__dots" aria-label={`${project.title} image selector`}>
-          {project.images.map((_, i) => (
-            <button
-              key={i}
-              className={i === active ? 'active' : ''}
-              onClick={(e) => { e.stopPropagation(); setActive(i); }}
-              aria-label={`Show image ${i + 1}`}
-            />
-          ))}
-        </div>
+      <div className="proj-card__media">
+        <img src={project.image} alt={project.title} loading="lazy" />
       </div>
-
       <div className="proj-card__info">
         <h3 className="proj-card__title">{project.title}</h3>
         <p className="proj-card__meta">{project.descriptor}</p>
